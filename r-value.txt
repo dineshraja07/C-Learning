@@ -1,0 +1,9 @@
+
+r-value in c++:
+1. temporary object like obj=Myclass("hello");
+2.value like int x=10 , here 10 is r-value
+3. functions return none reference 
+ string getName()
+ {
+   return "harry"; // r-value
+  }

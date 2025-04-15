@@ -1,0 +1,3 @@
+
+     void setData(int d)
+    {

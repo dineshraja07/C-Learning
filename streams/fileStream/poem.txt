@@ -1,0 +1,9 @@
+The trace of the programming language C++ can be done back to 1979
+when Bjarne Stroustrup was doing some development for this thesis for PhD.
+One in all the words Stroustrup had the chance to figure with,
+was a language referred to as Simula, that because the name implies, 
+could be a language primarily designed for simulations. 
+The Simula sixty-seven language – that was the variant that Stroustrup
+worked with is considered the primary language to support the object-oriented programming paradigm.
+Stroustrup found that this paradigm was helpful for package development;
+but, the Simula language was way too slow for practice & practical use.

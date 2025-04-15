@@ -1,0 +1,9 @@
+
+Mystring obj;           // Default constructor
+obj = Mystring("dinesh"); // Move assignment operator (if you explicitly create a Mystring object)
+Mystring obj1 = obj;    // Copy constructor
+Mystring obj2 = "dinesh"; // Overloaded constructor
+obj = obj1;             // Copy assignment operator
+MyClass obj1(10); // Normal constructor
+MyClass obj2(std::move(obj1)); // Move constructor
+- > child class dont inherit base class constructor ,assignment Overloaded

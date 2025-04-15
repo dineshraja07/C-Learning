@@ -1,0 +1,259 @@
+1. sizeOf() //operator
+2. datatype:
+int,char,float,short,long,double,bool
+bool val=true // cout<<val return 1 or 0 
+if(val) // if(1)
+3.variable 
+local 
+global
+4.Arrays and objects can be defined by both static and dynamic
+int arr[10] // static
+int *arr=new int[10]//dynamic
+myclass obj1;//static
+myclass *obj=new Myclass; //dynamic
+5.const
+-> with cannot change the value
+-> can create const objects 
+	const Myclass obj;
+	obj.setValue(3) // error due to const object
+	// to let the compiler to know that this setValue() will not modify the object members we do
+	void setValue() const
+	{
+		 //implementation
+	}
+6. string :
+-> c-style string
+	 char str[10];
+	 #include<cstring> constains methods like strcmp(),strcat()...
+-> c++ string
+	string str;
+	#include<string> constains like .append(),.replace(),.at(),.find()....
+	//to get the string with spaces 
+	getline(cin,str);
+7.#include<cctype> // like ctype.h in c
+8.dynamic allocation
+	 -> create use ='new' keyword
+	 ->we have to manually delete the dynamic memory using 'delete' keyword
+
+8.vector
+	#include<vector> 
+	can be static and dynamic
+9.pointers and reference
+ int num=10
+ int &ref=num; //reference to num
+ int *ptr=num //pointer
+ 10. static 
+	static class,static variable
+	 Myclass::value=10 // access the static variable using ::resolution operator
+11.l-value and r-value  
+	 r-value in c++:
+	-> temporary object like obj=Myclass("hello");
+ ->value like int x=10 , here 10 is r-value
+ -> functions return none reference 
+						string getName()
+						{
+							 return "harry"; // r-value
+						}
+12. this -> pointer to current object
+13. function
+		return type
+		no return type
+		default argument in c++
+	 prototype of function(declaration)
+	 pass by value
+	 pass by reference
+	 pass by pointer
+14. static 
+		-> static function
+		->static variable
+		->No static class in the direct way
+15.Access modifier
+	 -> public =accessed outside the class 
+	 ->private =no access outside the class
+	 ->protected = access outside the class by inside child class only
+16. constructor
+	-> Default constructor (no arguments)
+	->parameterized constructor (with argument)
+	->copy constructor 
+		 invoked when :
+		 Myclass obj1;
+		 Myclass obj2=obj1;
+		 Myclass obj2(obj1);
+		 1.shallow copy for class with no raw pointers 
+		 2.deep copy for class with raw pointers
+	 ->Move constructor
+			to handle r-value as parameter
+			null out the source object and return this pointer
+17.Initialization list : this will be executed before the constructor body
+		Myclass(int data):value{data}
+		{
+
+		}
+18.friend function:
+	 to access the private members of a class
+	 declaration inside the class and implement should be outside of the class
+19. operator overloading
+	 copy assignment and move assignment :
+		copy assignemt:(handle l-value) 
+			 MyClass obj1(10);
+			 MyClass obj2(20);
+			 obj2 = obj1; // Copy assignment
+	 
+		move assigment:  (handle r-value)
+				 Mystring obj;         
+				 obj = Mystring("dinesh"); //here Mystring("dinesh") is temporary object so it is r-value
+20.Operator overloading as member function:
+		 Mystring obj1="dinesh";
+		 Mystring obj2="raja"
+		 obj2=obj1+obj2;
+		 operator+(Mystring &rhs) // obj2 is this , obj1 is rhs
+		->as global function:(implement is outside the class )
+				 Mystring obj1="dinesh";
+				 Mystring obj2="raja"
+				 obj2=obj1+obj2;
+				 operator+(Mystring &lhs,Mystring &rhs);
+21. inheritance:
+			Single Inheritance
+			Multiple Inheritance
+			Multilevel Inheritance
+			Hierarchical Inheritance
+			Hybrid Inheritance
+			class Derived :public Base
+			 here Derived class is inherited as public
+		 ->inherited as public 
+			 public members of Base will be the public members of Derived class
+			 protected memners of Base will be protected members of Derived class
+			 private members of Base class has No accessed by Derived class
+		 ->inherited as protected
+			 public and protected membesrs of Base class will be protected of derived class
+			 private will be no accessable
+		->inherited as private 
+			 everything will be No accessable by Derived class
+			
+22.Polymorphism:
+compile time (static binding):
+	Base obj=new Derived()//here it will be called based on the reference , not on object type
+	obj.display()// it calls the method of (base)
+To overcome this ,we go for dynamic binding using virtual function
+ runtime(dynamic binding):
+	Base obj=new Derived()
+	obj.display() // it calls the method of object type (Derived)
+23.virtual function() override 
+	//above override is the specifier to make sure the compiler to overide that method
+	//it does not override , error will be thrown
+24.Abstraction:
+		done by using virtual function()=>0;
+		A class that has the virtual function with no implement will act as abstract class
+		A class that has the implementation of virtual methods in abstract class is Concrete class
+		where object can be  created 
+24.interface:
+	 done by pure virtual functions 
+	 A class that has only the virtual function act as interface
+25.virtual destructor 
+		virtual ~Myclass(){ }
+		used for handle the error when we try to delete the object 
+		Myclass obj1=new Myclass();
+		delete obj1; // throw error if no virtual destructor
+
+26.smart pointers
+	 -> create dynamic object without using new 
+	 ->no manual deletion using delete
+		types:
+		1.unique pointer
+		2.shared pointer
+		3.weak pointer
+		1.unique pointer:
+			->smart pointers cannot be copied and assigned
+			->can be moved
+			->dynamic binding
+		2.shared pointer
+			->multiple pointers can refer same memory
+			->smart pointers can copied and assigned
+			->can be moved
+			->dynamic binding
+	 3.weak pointer
+			 ->to break the cycle scenerio in shared
+			 ex: A refers B , B refers A
+	 definition common for all:
+		for class:
+			unique_ptr<Test> t2{new Test(2000,"test2")}
+			unique_ptr<Test> t3=make_unique<Test>(3000,"test3");
+		for data type:
+			shared_ptr<int> p1=make_shared<int>(1); 
+			shared_ptr<int> ptr{new int};
+	 custom deletor:
+		 to do extra work more that just delete the memory
+27.stream
+			Base class: ios
+			child class: istream,ostream..
+			<iomanip>
+				-> to manipulating the cin,cout streams
+				 functions :boolapha,setprecision(),fixed,setf(),hex..
+		 filestream:
+		 <fstream>
+				ifstream file.open("") // Input File Stream(ifstream) 
+				ofstream file.open("")//output File Stream
+				flags like app
+				file.open("/path",iso::app)//app for open as appending
+				string line;
+				file>>line //read from file and store in line
+				file<<line //write from string line to file
+				/* 
+	open with mode :
+		ios::app //append
+		ios::in //read only
+		ios::out //write only
+		ios::trunc // clear content and open
+		
+*/
+28.standard template library 
+ Generic programming:
+	 template :
+		 to make the function or class to handle any type of data
+		 template<typename T>  //declaration
+		 T sum(T a,T b) {
+			 return a+b;
+		 }
+		 two templates: 
+				 ->class template
+				 ->function template
+			calling function: 
+			 sum<int>(1,3)
+				or sum(1,3) // this can handle any type
+	vector and all containers comes under template 
+Generic using macros:
+	#define // it is processed by preprocessor before compiler
+containers :
+	it is collection of objects and can manipulate using using algorithm functions 
+	like count(),copy(),find(),replace()
+	containers are 
+		sequence container : array,vector,list,deque
+		Associative container : set,map ..
+		container adapters : stakc,queue,priority queue
+	 to handle the list of user defined type (class ):
+		we should override the operators to use the sort(),find()..
+		example: we should override >,= < operators for sort() list<Person>
+		
+29. lambda expression:
+	 it is function object.
+		ex:  [](){cout<<"hello";}();
+				auto l=[](int a,int b){return a+b};
+				l(); //calling lambda  ,here compiler create function object from this lambda
+			 stateless lambda :
+				 it does not access the members of the scope 
+				 ex:
+				 int num=10;
+					 [](){ /*cannot access num */}
+				statefull:
+					int num=10;
+					[num]()mutable{num=num+10};//mutable allow the capture list variable to be modified
+
+					or 
+					[=](){/*can access all members*/} //pass by value
+					[&](){}//pass by reference
+					[this](){}//pass by reference
+			 can be used with algorithms functions:
+			 example:
+			 sort(vec.begin(),vec.end(),[](int a,int b){return a<b})
+			 
+
